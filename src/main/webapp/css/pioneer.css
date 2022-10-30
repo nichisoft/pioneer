@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+input[type=submit] {
+    width: 110px;
+}
+
+.power_mode {
+	/*width: 100%;*/
+	/*max-width: 300px;*/
+	width: 25%;
+    display: inline-block;
+	border-radius: 10px;
+	border: 1px red solid;
+	overflow: hidden;
+}
+
+.surround_mode {
+	/*width: 100%;*/
+	/*max-width: 300px;*/
+	width: 25%;
+    display: inline-block;
+	border-radius: 10px;
+	border: 1px red solid;
+	overflow: hidden;
+}
+
+.volume {
+	/*width: 100%;*/
+	/*max-width: 300px;*/
+	width: 25%;
+    display: inline-block;
+	border-radius: 10px;
+	border: 1px red solid;
+	overflow: hidden;
+}
+
+.audio_source {
+	/*width: 100%;*/
+	/*max-width: 300px;*/
+	width: 25%;
+    display: inline-block;
+	border-radius: 10px;
+	border: 1px red solid;
+	overflow: hidden;
+}
+
+.video_source {
+	/*width: 100%;*/
+	/*max-width: 300px;*/
+	width: 25%;
+    display: inline-block;
+	border-radius: 10px;
+	border: 1px red solid;
+	overflow: hidden;
+}
+
+.hdmi_source {
+	/*width: 100%;*/
+	/*max-width: 300px;*/
+	width: 25%;
+    display: inline-block;
+	border-radius: 10px;
+	border: 1px red solid;
+	overflow: hidden;
+}
+
+.play_mode {
+	/*width: 100%;*/
+	/*max-width: 300px;*/
+	width: 25%;
+    display: inline-block;
+	border-radius: 10px;
+	border: 1px red solid;
+	overflow: hidden;
+}
+
+.display {
+	/*width: 100%;*/
+	/*max-width: 300px;*/
+	width: 25%;
+    display: inline-block;
+	border-radius: 10px;
+	border: 1px red solid;
+	overflow: hidden;
+}
+
+.inner {
+	background-color: #eeeeee; padding: 5px;
+}
+
+@media screen and (max-width: 500px) {
+
+    .power_mode,
+    .surround_mode,
+    .volume,
+    .audio_source,
+    .video_source,
+    .hdmi_source,
+    .play_mode {
+        width: 70%;
+    }
+}
