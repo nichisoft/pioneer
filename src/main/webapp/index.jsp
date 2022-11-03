@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pioneer</title>
+<link rel="icon" href="pioneer.png" type="	image/png">
 <link
 	href="css/pioneer.css"
 	rel="stylesheet" type="text/css">
