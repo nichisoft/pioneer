@@ -54,7 +54,12 @@ public class PioneerServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		session.setAttribute("output", output);
 		
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+//		request.getRequestDispatcher("index.jsp").forward(request, response);
+		
+		String contextPath=request.getContextPath();
+		
+		//Pattern Post-Redirect-Get
+		response.sendRedirect(contextPath+"/index.jsp");
 	}
 	
 	private String sendCommand(final String command) {
