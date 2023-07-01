@@ -49,7 +49,12 @@ public class PioneerServlet extends HttpServlet {
 		String output=null;
 		
 		PioneerCommand pc=PioneerCommand.getPioneerCommandFromLabel(command);
-		output=sendCommand(pc.getCode());
+		if(pc!=null)
+			output=sendCommand(pc.getCode());
+		else {
+			pc=PioneerCommand.getPioneerCommandFromCode(command);
+			output=sendCommand(command);
+		}
 		
 		HttpSession session=request.getSession();
 		session.setAttribute("output", output);
