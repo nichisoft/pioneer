@@ -1,10 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Prof. Nicola Modugno">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false"%>
+<% pageContext.setAttribute("newLineChar", "\r\n"); %>
 <title>Pioneer</title>
 <link rel="icon" href="pioneer.png" type="	image/png">
 <link
@@ -107,6 +113,26 @@
 				<input type="submit" name="command" id="ctrl_stop" value="STOP">
 				<input type="submit" name="command" id="ctrl_enter" value="ENTER">
 				<input type="submit" name="command" id="ctrl_return" value="RETURN">
+			</div>
+		</div>
+		
+		<br />
+		
+		<div class="play_list">
+			<div class="inner">
+				<label>Play mode</label><br />
+				<input type="submit" name="command" id="query_current_folder" value="QUERY_CURRENT_FOLDER">
+				<br />
+				<c:if test="${fn:contains(output, 'GEP') && not fn:contains(output, 'kbps')}">
+					<c:set var="i" scope="session" value="${0+0}"/>
+					<c:forEach items="${fn:split(output,newLineChar)}" var="line">
+						<c:if test="${fn:contains(line, 'GEP')}">
+							<c:set var="i" scope="session" value="${i+1}"/>
+							<input type="submit" name="command" id="ctrl_select_folder_file" value="0000${i }GHP">${fn:substring(line, fn:indexOf(line, '\"')+1, line.length()-1)}</input>
+							<br />
+						</c:if>
+					</c:forEach>
+				</c:if>
 			</div>
 		</div>
 		
