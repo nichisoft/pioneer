@@ -74,6 +74,16 @@ input[type=submit] {
 	overflow: hidden;
 }
 
+.play_list {
+	/*width: 100%;*/
+	/*max-width: 300px;*/
+	width: 25%;
+    display: inline-block;
+	border-radius: 10px;
+	border: 1px red solid;
+	overflow: hidden;
+}
+
 .display {
 	/*width: 100%;*/
 	/*max-width: 300px;*/
