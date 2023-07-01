@@ -42,6 +42,10 @@ public enum PioneerCommand  {
 	STOP("20PB", "STOP", "ctrl_stop"),
 	ENTER("30PB", "ENTER", "ctrl_enter"),
 	RETURN("31PB", "RETURN", "ctrl_return"),
+	QUERY_POWER_STATUS("?P", "QUERY_POWER_STATUS", "query_power_status"), //return PWR2 SPENTO, PWR0 ACCESO
+	QUERY_ACTIVE_INPUT("?F", "QUERY_ACTIVE_INPUT", "query_active_function"),
+	QUERY_CURRENT_FOLDER("?GAP", "QUERY_CURRENT_FOLDER", "query_current_folder"),
+	SELECT_FOLDER_FILE("GHP", "SELECT FOLDER/FILE", "ctrl_select_folder_file"), //00001GHP for first file, 00002GHP for second file etc...
 	;
 	
 	private String code;
@@ -92,49 +96,51 @@ public enum PioneerCommand  {
 	public static PioneerCommand getPioneerCommandFromCode(String code) {
 		if(code==null)
 			return null;
-		switch (code) {
-			case "PO": return PioneerCommand.POWER_ON;
-			case "PF": return PioneerCommand.POWER_OFF;
-			case "0100SR": return PioneerCommand.ADVANCED_SURROUND;
-			case "0005SR": return PioneerCommand.AUTO_DIRECT;
-			case "0010SR": return PioneerCommand.ALC_STANDARD;
-			case "VU": return PioneerCommand.VOL_UP;
-			case "VD": return PioneerCommand.VOL_DOWN;
-			case "MO": return PioneerCommand.MUTE_ON;
-			case "MF": return PioneerCommand.MUTE_OFF;
-			case "FU": return PioneerCommand.INPUT_UP;
-			case "FD": return PioneerCommand.INPUT_DOWN;
-			case "02FN": return PioneerCommand.TUNER;
-			case "01FN": return PioneerCommand.CD;
-			case "03FN": return PioneerCommand.CDR_TAPE;
-			case "00FN": return PioneerCommand.PHONO;
-			case "17FN": return PioneerCommand.IPOD_USB;
-			case "38FN": return PioneerCommand.NETRADIO;
-			case "33FN": return PioneerCommand.ADAPTER;
-			case "44FN": return PioneerCommand.MEDIA_SERVER;
-			case "45FN": return PioneerCommand.FAVORITES;
-			case "04FN": return PioneerCommand.DVD;
-			case "15FN": return PioneerCommand.DVR_BDR;
-			case "25FN": return PioneerCommand.BD;
-			case "05FN": return PioneerCommand.TV;
-			case "06FN": return PioneerCommand.SAT_CBL;
-			case "10FN": return PioneerCommand.VIDEO1;
-			case "14FN": return PioneerCommand.VIDEO2;
-			case "19FN": return PioneerCommand.HDMI1;
-			case "20FN": return PioneerCommand.HDMI2;
-			case "21FN": return PioneerCommand.HDMI3;
-			case "22FN": return PioneerCommand.HDMI4;
-			case "23FN": return PioneerCommand.HDMI5;
-			case "24FN": return PioneerCommand.HDMI6;
-			case "12PB": return PioneerCommand.REWIND;
-			case "13PB": return PioneerCommand.FORWARD;
-			case "10PB": return PioneerCommand.PLAY;
-			case "11PB": return PioneerCommand.PAUSE;
-			case "20PB": return PioneerCommand.STOP;
-			case "30PB": return PioneerCommand.ENTER;
-			case "31PB": return PioneerCommand.RETURN;
-			default: return null;
-		}
+		if(code.equals("PO")) return PioneerCommand.POWER_ON;
+		else if(code.equals("PF")) return PioneerCommand.POWER_OFF;
+		else if(code.equals("0100SR")) return PioneerCommand.ADVANCED_SURROUND;
+		else if(code.equals("0005SR")) return PioneerCommand.AUTO_DIRECT;
+		else if(code.equals("0010SR")) return PioneerCommand.ALC_STANDARD;
+		else if(code.equals("VU")) return PioneerCommand.VOL_UP;
+		else if(code.equals("VD")) return PioneerCommand.VOL_DOWN;
+		else if(code.equals("MO")) return PioneerCommand.MUTE_ON;
+		else if(code.equals("MF")) return PioneerCommand.MUTE_OFF;
+		else if(code.equals("FU")) return PioneerCommand.INPUT_UP;
+		else if(code.equals("FD")) return PioneerCommand.INPUT_DOWN;
+		else if(code.equals("02FN")) return PioneerCommand.TUNER;
+		else if(code.equals("01FN")) return PioneerCommand.CD;
+		else if(code.equals("03FN")) return PioneerCommand.CDR_TAPE;
+		else if(code.equals("00FN")) return PioneerCommand.PHONO;
+		else if(code.equals("17FN")) return PioneerCommand.IPOD_USB;
+		else if(code.equals("38FN")) return PioneerCommand.NETRADIO;
+		else if(code.equals("33FN")) return PioneerCommand.ADAPTER;
+		else if(code.equals("44FN")) return PioneerCommand.MEDIA_SERVER;
+		else if(code.equals("45FN")) return PioneerCommand.FAVORITES;
+		else if(code.equals("04FN")) return PioneerCommand.DVD;
+		else if(code.equals("15FN")) return PioneerCommand.DVR_BDR;
+		else if(code.equals("25FN")) return PioneerCommand.BD;
+		else if(code.equals("05FN")) return PioneerCommand.TV;
+		else if(code.equals("06FN")) return PioneerCommand.SAT_CBL;
+		else if(code.equals("10FN")) return PioneerCommand.VIDEO1;
+		else if(code.equals("14FN")) return PioneerCommand.VIDEO2;
+		else if(code.equals("19FN")) return PioneerCommand.HDMI1;
+		else if(code.equals("20FN")) return PioneerCommand.HDMI2;
+		else if(code.equals("21FN")) return PioneerCommand.HDMI3;
+		else if(code.equals("22FN")) return PioneerCommand.HDMI4;
+		else if(code.equals("23FN")) return PioneerCommand.HDMI5;
+		else if(code.equals("24FN")) return PioneerCommand.HDMI6;
+		else if(code.equals("12PB")) return PioneerCommand.REWIND;
+		else if(code.equals("13PB")) return PioneerCommand.FORWARD;
+		else if(code.equals("10PB")) return PioneerCommand.PLAY;
+		else if(code.equals("11PB")) return PioneerCommand.PAUSE;
+		else if(code.equals("20PB")) return PioneerCommand.STOP;
+		else if(code.equals("30PB")) return PioneerCommand.ENTER;
+		else if(code.equals("31PB")) return PioneerCommand.RETURN;
+		else if(code.equals("?P")) return PioneerCommand.QUERY_POWER_STATUS;
+		else if(code.equals("?F")) return PioneerCommand.QUERY_ACTIVE_INPUT;
+		else if(code.equals("?GAP")) return PioneerCommand.QUERY_CURRENT_FOLDER;
+		else if(code.contains("GHP")) return PioneerCommand.SELECT_FOLDER_FILE;
+		return null;
 	}
 
 	public static PioneerCommand getPioneerCommandFromLabel(String label) {
@@ -181,6 +187,62 @@ public enum PioneerCommand  {
 			case "STOP":  return PioneerCommand.STOP;
 			case "ENTER":  return PioneerCommand.ENTER;
 			case "RETURN":  return PioneerCommand.RETURN;
+			case "QUERY_POWER_STATUS":  return PioneerCommand.QUERY_POWER_STATUS;
+			case "QUERY_ACTIVE_INPUT":  return PioneerCommand.QUERY_ACTIVE_INPUT;
+			case "QUERY_CURRENT_FOLDER":  return PioneerCommand.QUERY_CURRENT_FOLDER;
+			case "SELECT FOLDER/FILE":  return PioneerCommand.SELECT_FOLDER_FILE;
+			default: return null;
+		}
+	}
+	
+	public static PioneerCommand getPioneerCommandFromHtmlName(String htmlName) {
+		if(htmlName==null)
+			return null;
+		switch (htmlName) {
+			case "power_on":  return PioneerCommand.POWER_ON;
+			case "power_off":  return PioneerCommand.POWER_OFF;
+			case "advanced_surround":  return PioneerCommand.ADVANCED_SURROUND;
+			case "auto_direct":  return PioneerCommand.AUTO_DIRECT;
+			case "alc_standard":  return PioneerCommand.ALC_STANDARD;
+			case "vol_up":  return PioneerCommand.VOL_UP;
+			case "vol_down":  return PioneerCommand.VOL_DOWN;
+			case "mute_on":  return PioneerCommand.MUTE_ON;
+			case "mute_off":  return PioneerCommand.MUTE_OFF;
+			case "input_up":  return PioneerCommand.INPUT_UP;
+			case "input_down":  return PioneerCommand.INPUT_DOWN;
+			case "source_tuner":  return PioneerCommand.TUNER;
+			case "source_cd":  return PioneerCommand.CD;
+			case "source_cdrtape":  return PioneerCommand.CDR_TAPE;
+			case "source_phono":  return PioneerCommand.PHONO;
+			case "source_ipodusb":  return PioneerCommand.IPOD_USB;
+			case "source_netradio":  return PioneerCommand.NETRADIO;
+			case "source_adapter":  return PioneerCommand.ADAPTER;
+			case "source_mediaserver":  return PioneerCommand.MEDIA_SERVER;
+			case "source_favorites":  return PioneerCommand.FAVORITES;
+			case "source_dvd":  return PioneerCommand.DVD;
+			case "source_dvrbdr":  return PioneerCommand.DVR_BDR;
+			case "source_bd":  return PioneerCommand.BD;
+			case "source_tv":  return PioneerCommand.TV;
+			case "source_satcbl":  return PioneerCommand.SAT_CBL;
+			case "source_video1":  return PioneerCommand.VIDEO1;
+			case "source_video2":  return PioneerCommand.VIDEO2;
+			case "source_hdmi1":  return PioneerCommand.HDMI1;
+			case "source_hdmi2":  return PioneerCommand.HDMI2;
+			case "source_hdmi3":  return PioneerCommand.HDMI3;
+			case "source_hdmi4":  return PioneerCommand.HDMI4;
+			case "source_hdmi5":  return PioneerCommand.HDMI5;
+			case "source_hdmi6":  return PioneerCommand.HDMI6;
+			case "ctrl_rewind":  return PioneerCommand.REWIND;
+			case "ctrl_forward":  return PioneerCommand.FORWARD;
+			case "ctrl_play": return PioneerCommand.PLAY;
+			case "ctrl_pause":  return PioneerCommand.PAUSE;
+			case "ctrl_stop":  return PioneerCommand.STOP;
+			case "ctrl_enter":  return PioneerCommand.ENTER;
+			case "ctrl_return":  return PioneerCommand.RETURN;
+			case "query_power_status":  return PioneerCommand.QUERY_POWER_STATUS;
+			case "query_active_function":  return PioneerCommand.QUERY_ACTIVE_INPUT;
+			case "query_current_folder":  return PioneerCommand.QUERY_CURRENT_FOLDER;
+			case "ctrl_select_folder_file":  return PioneerCommand.SELECT_FOLDER_FILE;
 			default: return null;
 		}
 	}
