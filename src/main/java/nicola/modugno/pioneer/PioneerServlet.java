@@ -50,10 +50,10 @@ public class PioneerServlet extends HttpServlet {
 		
 		PioneerCommand pc=PioneerCommand.getPioneerCommandFromLabel(command);
 		if(pc!=null)
-			output=sendCommand(pc.getCode());
+			output=sendCommand(pc.getCode(), pc.getSleepTimeMillis());
 		else {
 			pc=PioneerCommand.getPioneerCommandFromCode(command);
-			output=sendCommand(command);
+			output=sendCommand(command, pc.getSleepTimeMillis());
 		}
 		
 		HttpSession session=request.getSession();
@@ -67,11 +67,11 @@ public class PioneerServlet extends HttpServlet {
 		response.sendRedirect(contextPath+"/index.jsp");
 	}
 	
-	private String sendCommand(final String command) {
+	private String sendCommand(final String command, final Long sleelTimeMillis) {
 		String output=null;
 		MyTelnetClient myTelnetClient=new MyTelnetClient();
 		myTelnetClient.connect(ctx.getInitParameter("pioneer_ip"), Integer.parseInt(ctx.getInitParameter("pioneer_port")));
-		output=myTelnetClient.sendCommand(command);
+		output=myTelnetClient.sendCommand(command, sleelTimeMillis);
 		myTelnetClient.disconnect();
 		return output;
 	}
