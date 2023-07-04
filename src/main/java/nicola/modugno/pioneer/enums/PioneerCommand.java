@@ -1,61 +1,64 @@
 package nicola.modugno.pioneer.enums;
 
 
-public enum PioneerCommand  {
-	POWER_ON("PO",  "POWER ON", "power_on"),
-	POWER_OFF("PF", "POWER OFF", "power_off"),
-	ADVANCED_SURROUND("0100SR", "Adv Surround", "advanced_surround"),
-	AUTO_DIRECT("0005SR", "Auto/Direct", "auto_direct"),
-	ALC_STANDARD("0010SR", "ALC/Standard", "alc_standard"),
-	VOL_UP("VU", "VOL UP", "vol_up"),
-	VOL_DOWN("VD", "VOL DOWN", "vol_down"),
-	MUTE_ON("MO", "MUTE ON", "mute_on"),
-	MUTE_OFF("MF", "MUTE OFF", "mute_off"),
-	INPUT_UP("FU", "INPUT UP", "input_up"),
-	INPUT_DOWN("FD", "INPUT DOWN", "input_down"),
-	TUNER("02FN", "TUNER", "source_tuner"),
-	CD("01FN", "CD", "source_cd"),
-	CDR_TAPE("03FN", "CD-R/TAPE", "source_cdrtape"),
-	PHONO("00FN", "PHONO", "source_phono"),
-	IPOD_USB("17FN", "iPod/USB", "source_ipodusb"),
-	NETRADIO("38FN", "Netradio", "source_netradio"),
-	ADAPTER("33FN", "Adapter", "source_adapter"),
-	MEDIA_SERVER("44FN", "Media Server", "source_mediaserver"),
-	FAVORITES("45FN", "Favorites", "source_favorites"),
-	DVD("04FN", "DVD", "source_dvd"),
-	DVR_BDR("15FN", "DVR/BDR", "source_dvrbdr"),
-	BD("25FN", "BD", "source_bd"),
-	TV("05FN", "TV", "source_tv"),
-	SAT_CBL("06FN", "Sat/Cbl", "source_satcbl"),
-	VIDEO1("10FN", "VIDEO1", "source_video1"),
-	VIDEO2("14FN", "VIDEO2", "source_video2"),
-	HDMI1("19FN", "HDMI1", "source_hdmi1"),
-	HDMI2("20FN", "HDMI2", "source_hdmi2"),
-	HDMI3("21FN", "HDMI3", "source_hdmi3"),
-	HDMI4("22FN", "HDMI4", "source_hdmi4"),
-	HDMI5("23FN", "HDMI5", "source_hdmi5"),
-	HDMI6("24FN", "HDMI6", "source_hdmi6"),
-	REWIND("12PB", "REWIND", "ctrl_rewind"),
-	FORWARD("13PB", "FORWARD", "ctrl_forward"),
-	PLAY("10PB", "PLAY", "ctrl_play"),
-	PAUSE("11PB", "PAUSE", "ctrl_pause"),
-	STOP("20PB", "STOP", "ctrl_stop"),
-	ENTER("30PB", "ENTER", "ctrl_enter"),
-	RETURN("31PB", "RETURN", "ctrl_return"),
-	QUERY_POWER_STATUS("?P", "QUERY_POWER_STATUS", "query_power_status"), //return PWR2 SPENTO, PWR0 ACCESO
-	QUERY_ACTIVE_INPUT("?F", "QUERY_ACTIVE_INPUT", "query_active_function"),
-	QUERY_CURRENT_FOLDER("?GAP", "QUERY_CURRENT_FOLDER", "query_current_folder"),
-	SELECT_FOLDER_FILE("GHP", "SELECT FOLDER/FILE", "ctrl_select_folder_file"), //00001GHP for first file, 00002GHP for second file etc...
+public enum PioneerCommand {
+	POWER_ON("PO",  "POWER ON", "power_on", 0L),
+	POWER_OFF("PF", "POWER OFF", "power_off", 0L),
+	ADVANCED_SURROUND("0100SR", "Adv Surround", "advanced_surround", 0L),
+	AUTO_DIRECT("0005SR", "Auto/Direct", "auto_direct", 0L),
+	ALC_STANDARD("0010SR", "ALC/Standard", "alc_standard", 0L),
+	VOL_UP("VU", "VOL UP", "vol_up", 0L),
+	VOL_DOWN("VD", "VOL DOWN", "vol_down", 0L),
+	MUTE_ON("MO", "MUTE ON", "mute_on", 0L),
+	MUTE_OFF("MF", "MUTE OFF", "mute_off", 0L),
+	INPUT_UP("FU", "INPUT UP", "input_up", 0L),
+	INPUT_DOWN("FD", "INPUT DOWN", "input_down", 0L),
+	TUNER("02FN", "TUNER", "source_tuner", 0L),
+	CD("01FN", "CD", "source_cd", 0L),
+	CDR_TAPE("03FN", "CD-R/TAPE", "source_cdrtape", 0L),
+	PHONO("00FN", "PHONO", "source_phono", 0L),
+	IPOD_USB("17FN", "iPod/USB", "source_ipodusb", 0L),
+	NETRADIO("38FN", "Netradio", "source_netradio", 0L),
+	ADAPTER("33FN", "Adapter", "source_adapter", 0L),
+	MEDIA_SERVER("44FN", "Media Server", "source_mediaserver", 0L),
+	FAVORITES("45FN", "Favorites", "source_favorites", 0L),
+	DVD("04FN", "DVD", "source_dvd", 0L),
+	DVR_BDR("15FN", "DVR/BDR", "source_dvrbdr", 0L),
+	BD("25FN", "BD", "source_bd", 0L),
+	TV("05FN", "TV", "source_tv", 0L),
+	SAT_CBL("06FN", "Sat/Cbl", "source_satcbl", 0L),
+	VIDEO1("10FN", "VIDEO1", "source_video1", 0L),
+	VIDEO2("14FN", "VIDEO2", "source_video2", 0L),
+	HDMI1("19FN", "HDMI1", "source_hdmi1", 0L),
+	HDMI2("20FN", "HDMI2", "source_hdmi2", 0L),
+	HDMI3("21FN", "HDMI3", "source_hdmi3", 0L),
+	HDMI4("22FN", "HDMI4", "source_hdmi4", 0L),
+	HDMI5("23FN", "HDMI5", "source_hdmi5", 0L),
+	HDMI6("24FN", "HDMI6", "source_hdmi6", 0L),
+	REWIND("12PB", "REWIND", "ctrl_rewind", 0L),
+	FORWARD("13PB", "FORWARD", "ctrl_forward", 0L),
+	PLAY("10PB", "PLAY", "ctrl_play", 0L),
+	PAUSE("11PB", "PAUSE", "ctrl_pause", 0L),
+	STOP("20PB", "STOP", "ctrl_stop", 0L),
+	ENTER("30PB", "ENTER", "ctrl_enter", 0L),
+	RETURN("31PB", "RETURN", "ctrl_return", 0L),
+	QUERY_POWER_STATUS("?P", "QUERY_POWER_STATUS", "query_power_status", 0L), //return PWR2 SPENTO, PWR0 ACCESO
+	QUERY_ACTIVE_INPUT("?F", "QUERY_ACTIVE_INPUT", "query_active_function", 0L),
+	QUERY_CURRENT_FOLDER("?GAP", "QUERY_CURRENT_FOLDER", "query_current_folder", 750L),
+	SELECT_FOLDER_FILE("GHP", "SELECT FOLDER/FILE", "ctrl_select_folder_file", 750L), //00001GHP for first file, 00002GHP for second file etc...
+	LIST_CONTENT("?GIA0000100180", "LIST_CONTENT", "list_content", 750L)
 	;
 	
 	private String code;
 	private String label;
 	private String htmlName;
+	private Long sleepTimeMillis;
 	
-	private PioneerCommand(String code, String label, String htmlName) {
+	private PioneerCommand(String code, String label, String htmlName, Long sleepTimeMillis) {
 		this.setCode(code);
 		this.setLabel(label);
 		this.setHtmlName(htmlName);
+		this.setSleepTimeMillis(sleepTimeMillis);
 	} 
 
 	public String getCode() {
@@ -82,6 +85,14 @@ public enum PioneerCommand  {
 		this.htmlName = htmlName;
 	}
 
+	public Long getSleepTimeMillis() {
+		return sleepTimeMillis;
+	}
+
+	public void setSleepTimeMillis(Long sleepTimeMillis) {
+		this.sleepTimeMillis = sleepTimeMillis;
+	}
+
 	@Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
@@ -89,6 +100,7 @@ public enum PioneerCommand  {
         sb.append("{code=").append(code);
         sb.append(", label='").append(label).append('\'');
         sb.append(", htmlName='").append(htmlName).append('\'');
+        sb.append(", sleepTimeMillis='").append(sleepTimeMillis).append('\'');
         sb.append('}');
         return sb.toString();
     }
@@ -140,6 +152,7 @@ public enum PioneerCommand  {
 		else if(code.equals("?F")) return PioneerCommand.QUERY_ACTIVE_INPUT;
 		else if(code.equals("?GAP")) return PioneerCommand.QUERY_CURRENT_FOLDER;
 		else if(code.contains("GHP")) return PioneerCommand.SELECT_FOLDER_FILE;
+		else if(code.equals("?GIA0000100180")) return PioneerCommand.LIST_CONTENT;
 		return null;
 	}
 
@@ -191,6 +204,7 @@ public enum PioneerCommand  {
 			case "QUERY_ACTIVE_INPUT":  return PioneerCommand.QUERY_ACTIVE_INPUT;
 			case "QUERY_CURRENT_FOLDER":  return PioneerCommand.QUERY_CURRENT_FOLDER;
 			case "SELECT FOLDER/FILE":  return PioneerCommand.SELECT_FOLDER_FILE;
+			case "LIST_CONTENT":  return PioneerCommand.LIST_CONTENT;
 			default: return null;
 		}
 	}
@@ -243,6 +257,7 @@ public enum PioneerCommand  {
 			case "query_active_function":  return PioneerCommand.QUERY_ACTIVE_INPUT;
 			case "query_current_folder":  return PioneerCommand.QUERY_CURRENT_FOLDER;
 			case "ctrl_select_folder_file":  return PioneerCommand.SELECT_FOLDER_FILE;
+			case "list_content":  return PioneerCommand.LIST_CONTENT;
 			default: return null;
 		}
 	}
